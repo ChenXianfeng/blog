@@ -16,21 +16,15 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link href="../blog.css" rel="stylesheet">
 	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="../showdown-master/dist/showdown.min.js"></script>
 	<script>
-		$(document).ready(function(){
-			$.ajax({
-				 type: "GET",
-				 url: "http://localhost:8088/api/showOne?type=git",
-				 dataType: "json",
-				 success: function(data){
-				 $("#big_title").html(data[0].big_title);
-				 $("#create_date").html(data[0].create_date);
-				 $("#context").html(data[0].context);
-                 					 
-				   
-					}
-			});
-		});
+	function convert(){
+	
+		var text = $("#oriContent").val();
+		var converter = new showdown.Converter();
+		var html = converter.makeHtml(text);
+		$("#result").html(html);
+	}
     </script>
   </head>
 
@@ -61,14 +55,13 @@
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-12 blog-main">
-
-          <div class="blog-post">
-            <h2 class="blog-post-title" id="big_title"></h2>
-            <p class="blog-post-meta" id = "create_date"></p><a href="#">下载为.MD文件</a>
-          </div>
-          <div class="blog-post" id="context"></div>	  
-
-
+		<form action = "http://localhost:8088/api/add" method="post">
+		<div>标题<input type="text" id = "big_title" name="big_title" /></div>
+		<div>副标题<input id = "little_title"/></div>
+        <textarea id="oriContent" style="height:400px;width:600px;" onkeyup="convert()"></textarea>
+		<div id="result" style="height:400px;width:600px;border:solid grey 1px;"></div>
+		<button type="submit">发布</button>
+		</form>
         </div><!-- /.blog-main -->
 
       </div><!-- /.row -->
