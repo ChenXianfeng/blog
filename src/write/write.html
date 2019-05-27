@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../favicon.ico">
+    <link rel="icon" href="../../favicon.ico">
 
     <title>Blog Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <link href="../blog.css" rel="stylesheet">
+    <link href="../../blog.css" rel="stylesheet">
 	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="../showdown-master/dist/showdown.min.js"></script>
+	<script src="../../showdown-master/dist/showdown.min.js"></script>
 	<script>
 	function convert(){
 	
@@ -57,7 +57,7 @@
         <div class="col-md-12 blog-main">
 		<form action = "http://localhost:8088/api/add" method="post">
 		<div>标题<input type="text" id = "big_title" name="big_title" /></div>
-		<div>副标题<input id = "little_title"/></div>
+		<div>副标题<input id = "little_title" name="little_title"/></div>
         <textarea id="oriContent" style="height:400px;width:600px;" onkeyup="convert()"></textarea>
 		<div id="result" style="height:400px;width:600px;border:solid grey 1px;"></div>
 		<button type="submit">发布</button>
@@ -79,9 +79,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../assets/js/vendor/popper.min.js"></script>
-    <script src="../dist/js/bootstrap.min.js"></script>
-    <script src="../assets/js/vendor/holder.min.js"></script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
 
     <script>
       Holder.addTheme('thumb', {
