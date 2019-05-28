@@ -51,29 +51,34 @@
     </script>
   </head>
 
-  <body>
+  <body >	
+	<div class="container" style="margin-bottom:25px;">
+      <header class="blog-header py-3">
+        <div class="row flex-nowrap justify-content-between align-items-center">
 
-    <div class="container" style="margin-bottom:40px;background:#ffdada;">
-      <div class="nav-scroller py-1 mb-2">
-        <nav class="nav d-flex">
-          <a class="p-2 text-muted" href="../index.html"><b>Home</b></a>
-          <a class="p-2 text-muted" href="../java/java.html">Java web</a>
+          <div class="col-1 text-center">
+            <a class="blog-header-logo text-dark" href="../../index.html"><span style="color:#1e9fff;">Home</span></a>
+          </div>
+
+        </div>
+      </header>
+
+      <div class="nav-scroller py-1 mb-2" style="margin-bottom:40px;background:#ffffff;padding:5px;">
+        <nav class="nav d-flex justify-content-between">		  
+          <a class="p-2 text-muted" href="../java/Spring IOC 容器源码分析.html">Java web</a>
           <a class="p-2 text-muted" href="../eclipse/eclipse.html">eclipse</a>
           <a class="p-2 text-muted" href="../sql/sq.html">数据库</a>
-          <a class="p-2 text-muted" href="git.html"><p style="color:#1e9fff;">Git</p></a>
+          <a class="p-2 text-muted" href="../git/git.html">Git</a>
           <a class="p-2 text-muted" href="#">Python</a>
           <a class="p-2 text-muted" href="#">Node.js</a>
           <a class="p-2 text-muted" href="#">Vue.js</a>
           <a class="p-2 text-muted" href="#">小程序</a>
           <a class="p-2 text-muted" href="#">其他</a>
-		  <a class="p-2 text-muted" href="#">收藏夹</a>
-		  <a class="p-2 text-muted" href="#">写博客</a>
-		  
-		  
-
+		  <a class="p-2 text-muted" href="">收藏夹</a>
+		  <a class="p-2 text-muted" href="#"><p style="color:#1e9fff;">写博客</p></a>
         </nav>
       </div>
-    </div>
+	</div> 
 
     <main role="main" class="container">
       <div class="row">
@@ -87,11 +92,16 @@
 		  <label for="usr">副标题:</label>
 		  <input type="text" class="form-control" id = "little_title" name="little_title">
 		</div>
-		<P>插入图片</P>
+
 		<div class="form-group">
 		  <label for="comment">内容(markdown):</label>
+		  <div style="margin-bottom:10px;">
+		  <input type="button" class="btn btn-info" value="插入图片">
+		  <input type="button" class="btn btn-info" value="导入附件">
+		  </div>
 		  <textarea class="form-control" id="oriContent" name = "context" style="height:400px;" onkeyup="convert()"></textarea>
 		</div>
+		<label for="comment">预览:</label>
 		<div class="card" style="height:400px;border:solid grey 1px;">
 		<div class="card-body" id="result" style="overflow-y:auto;"></div>
 		</div>
@@ -102,7 +112,7 @@
 		  <label><input type="radio" name="optradio" value = "git">git</label>
 		  <label><input type="radio" name="optradio" value = "其他">其他</label>
 		</div>
-		<input type="submit" class="btn btn-info" onclick = "formsubmit()" value="发布" style="margin-bottom:20px;">
+		<input type="submit" class="btn btn-success" onclick = "formsubmit()" value="发布" style="margin-bottom:20px;">
 		</form>
         </div><!-- /.blog-main -->
 
@@ -116,7 +126,7 @@
         <a href="#">Back to top</a>
       </p>
     </footer>
-
+	
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
