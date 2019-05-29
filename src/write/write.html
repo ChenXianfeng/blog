@@ -29,20 +29,22 @@
 	var big_title = $("#big_title").val();
 	var little_title = $("#little_title").val();
 	var context = $("#result").html();
+	var type = $("input[name='optradio']:checked").val();
 		$.ajax({
 			 type: "post",
-			 url: "http://192.168.89.208:3000/add",
+			 url: "http://192.168.89.208:3000/addall",
 			 dataType: "json",
 			 data:{
 			   big_title: big_title,
 			   little_title: little_title,
-			   context: context
+			   context: context,
+			   type:type
 			 },
 			 success: function(data){
 			 $("#big_title").val();
 			 $("#little_title").val();
 			 $("#oriContent").val();
-								 
+			 $("input[name='optradio']:checked:first").attr('checked', 'checked');					 
 			   
 				}
 		});

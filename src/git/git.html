@@ -19,16 +19,16 @@
 	<script>
 		$(document).ready(function(){
 			$.ajax({
-				 type: "GET",
-				 url: "http://localhost:8088/api/showOne?type=git",
-				 dataType: "json",
-				 success: function(data){
-				 $("#big_title").html(data[0].big_title);
-				 $("#create_date").html(data[0].create_date);
-				 $("#context").html(data[0].context);
-                 					 
-	
-					}
+				type: "GET",
+				url: "http://localhost:3000/findbytype?type=test",
+				dataType: "json",
+				success: function(data){
+				$("#big_title").html(data[0].big_title);
+				$("#create_date").html(data[0].create_date);
+				$("#context").html(data[0].context);
+								 
+
+				}
 			});
 		});
     </script>

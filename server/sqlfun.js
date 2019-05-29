@@ -1,8 +1,12 @@
 var sqlMap={
-  user:{
+  blog_find:{
     findall:"select * from blog ;",
 	findbybigtitle:"select * from blog where big_title = ?;",
-	addall:"insert into blog(big_title,little_title,context,create_date,change_date,type) values(?,?,?,now(),now(),?)"
+	findbytype:"select * from blog where type = ?;"
+
+  },
+  blog_add:{
+	addall:"insert into blog(big_title,little_title,context,create_date,change_date,type) values(?,?,?,now(),now(),?)"  
   }
   
 }

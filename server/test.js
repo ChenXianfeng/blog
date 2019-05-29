@@ -6,6 +6,7 @@ var models = require('./db');//数据库链接信息
 var bodyParser = require('body-parser');
 var path = require('path');
 var fs = require('fs');
+var url = require('url');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 var connection = mysql.createConnection(models.mysql);
@@ -25,19 +26,62 @@ app.post("/",function(req,res){
     });
 });
 
-app.post("/add",function(req,res){
-	var sql = $sql.user.addall;
+app.post("/addall",function(req,res){
+	var sql = $sql.blog_add.addall;
 	var body = req.body;
-	var params = [body.big_title,body.little_title,body.context,"test"];
+	var params = [body.big_title,body.little_title,body.context,body.type];
+	connection.query(sql,params,function (err, result) {
+        if(err){
+         console.log('[INSERT ERROR] - ',err.message);
+         return;
+        }
+			
+    });
+});
+
+app.get("/findall",function(req,res){
+	var sql = $sql.blog_find.findall;
+	connection.query(sql,function (err, result) {
+        if(err){
+         console.log('[INSERT ERROR] - ',err.message);
+         return;
+        }else{
+		 res.setHeader("Access-Control-Allow-Origin", "*");
+		 res.json(result);
+         return;		 
+		}
+			
+    });
+});
+
+app.get("/findbytype",function(req,res){
+	var sql = $sql.blog_find.findbytype;
+	var param =  url.parse(req.url, true).query;
+	var params = [param.type];
 	connection.query(sql,params,function (err, result) {
         if(err){
          console.log('[INSERT ERROR] - ',err.message);
          return;
         }else{
-		 var filePath = path.resolve('../index.html');
-		 res.redirect("form");
+		 res.setHeader("Access-Control-Allow-Origin", "*");
+		 res.json(result);
+         return;		 
+		}
+			
+    });
+});
 
-		 console.log(filePath);
+app.get("/findbybigtitle",function(req,res){
+	var sql = $sql.blog_find.findbytype;
+	var param =  url.parse(req.url, true).query;
+	var params = [param.type];
+	connection.query(sql,params,function (err, result) {
+        if(err){
+         console.log('[INSERT ERROR] - ',err.message);
+         return;
+        }else{
+		 res.setHeader("Access-Control-Allow-Origin", "*");
+		 res.json(result);
          return;		 
 		}
 			

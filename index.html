@@ -15,8 +15,29 @@
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link href="blog.css" rel="stylesheet">
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script>
-	</script>
+		$(document).ready(function(){
+			$.ajax({
+				type: "GET",
+				url: "http://localhost:3000/findall",
+				dataType: "json",
+				success: function(data){
+                    var html = "";				
+					for (var i = 0; i < data.length; i++) {  
+						html = html + '<div class="card" style="margin-bottom:5px;">'
+									  +'<div class="card-body">'
+									  +'<b>'+data[i].big_title+'</b><span class="badge badge-pill badge-secondary">'+data[i].type+'</span>'
+									  +'<p>'+data[i].context.substring(0, 160).replace(/<\/?.+?>/g,"").replace(/ /g,"")+'...</p>'
+									  +'<p><a href="src/git/git.html">阅读全部>></a></p>'
+									  +'</div>'
+									+'</div>';		
+					}
+                    $("#cards").html(html);					
+				}
+			});
+		});
+    </script>
   </head>
 
   <body>
@@ -52,28 +73,7 @@
 
     <main role="main" class="container"  style="min-height:900px;">
       <div class="row">
-        <div class="col-md-12 blog-main">
-			<div class="card" style="margin-bottom:5px;">
-			  <div class="card-body">
-			    <b>Git使用教程</b><span class="badge badge-pill badge-secondary">Git</span>
-				<p>如何安装git https://git-scm.com/download/win 根据自己的电脑选择是32位的还是64位的。下载完后直接运行，之后一直next就好了。安装成功后，会有这样一个标志。,如何使用git...</p>
-				<p><a href="src/git/git.html">阅读全部>></a></p>
-			  </div>
-			</div>
-			<div class="card" style="margin-bottom:5px;">
-			  <div class="card-body">
-			    <b>Git使用教程</b><span class="badge badge-pill badge-secondary"">Java web</span>
-				<p>如何安装git,如何使用git</p>
-				<p><a href="src/git/git.html">阅读全部>></a></p>
-			  </div>
-			</div>
-			<div class="card" style="margin-bottom:5px;">
-			  <div class="card-body">
-			    <b>Git使用教程</b><span class="badge badge-pill badge-secondary"">Java web</span>
-				<p>如何安装git,如何使用git</p>
-				<p><a href="src/git/git.html">阅读全部>></a></p>
-			  </div>
-			</div>
+        <div class="col-md-12 blog-main" id="cards">
 
         </div><!-- /.blog-main -->
 
@@ -91,11 +91,11 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../../../dist/js/bootstrap.min.js"></script>
-    <script src="../../../../assets/js/vendor/holder.min.js"></script>
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/holder.min.js"></script>
     <script>
       Holder.addTheme('thumb', {
         bg: '#55595c',
