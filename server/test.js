@@ -34,7 +34,10 @@ app.post("/addall",function(req,res){
         if(err){
          console.log('[INSERT ERROR] - ',err.message);
          return;
-        }
+        }else{
+		 res.setHeader("200","Content-Type", "text/html");
+    	 
+		}
 			
     });
 });
