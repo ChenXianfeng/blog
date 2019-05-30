@@ -44,18 +44,19 @@ app.post("/addall",function(req,res){
 });
 
 app.get("/addalls",function(req,res){	
-    var sql = $sql.blog_add.addall;
+    var sql = $sql.blog_add.addbig_title;
 	var body = url.parse(req.url, true).query;
-	var params = [body.big_title,body.little_title,body.context,body.type];
+	var params = [body.big_title];
 	connection.query(sql,params,function (err, result) {
         if(err){
          console.log('[INSERT ERROR] - ',err.message);
          return;
         }else{
-		 res.writeHead("Access-Control-Allow-Origin", "*");
-		 res.writeHead(200, {'Content-Type': 'text/html; charset=utf8'});
-		 res.end();
+		 res.setHeader("Access-Control-Allow-Origin", "*");
+		 res.json(result);
+		 console.log(result);
     	 console.log("success!!");
+		 return;
 		}
 			
     });
@@ -66,7 +67,7 @@ app.get("/findall",function(req,res){
 	var sql = $sql.blog_find.findall;
 	connection.query(sql,function (err, result) {
         if(err){
-         console.log('[INSERT ERROR] - ',err.message);
+         console.log('[ERROR] - ',err.message);
          return;
         }else{
 		 res.setHeader("Access-Control-Allow-Origin", "*");

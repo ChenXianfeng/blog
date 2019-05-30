@@ -16,7 +16,6 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link href="../../blog.css" rel="stylesheet">
 	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="../../showdown-master/dist/showdown.min.js"></script>
 	<script src="../../localhost.js"></script>
 	<script>
 	function convert(){
@@ -31,26 +30,21 @@
 		var big_title = $("#big_title").val();
 		var little_title = $("#little_title").val();
 		var context = $("#result").html();
+		alert("111221");
 		var type = $("input[name='optradio']:checked").val();
-			$.ajax({
-				 type: "get",
-				 url: getlocalhost()+"/addalls",
-				 dataType: "json",
-				 data:{
-				   big_title: big_title,
-				   little_title: little_title,
-				   context: context,
-				   type:type
-				 },
-				 success: function(data){
-				 alert(11111);
-				 $("#big_title").val();
-				 $("#little_title").val();
-				 $("#oriContent").val();
-				 $("input[name='optradio']:checked:first").attr('checked', 'checked');					 
-				   
-					}
-			});
+		$.ajax({
+			 type: "get",
+			 url: getlocalhost()+"/addalls?big_title="+big_title,
+			 dataType: "json",
+			 success: function(data){
+			 alert("1111");
+			 //$("#big_title").val();
+			 //$("#little_title").val();
+			 ///$("#oriContent").val();
+			 //$("input[name='optradio']:checked:first").attr('checked', 'checked');					 
+			   
+				}
+		});
 	}
 
     </script>
@@ -135,7 +129,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../assets/js/vendor/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/vendor/holder.min.js"></script>
