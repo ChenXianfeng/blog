@@ -25,7 +25,6 @@
 				url: localhost.ngrok+"/findall",
 				dataType: "json",
 				success: function(data){
-					alert(localhost.ngrok);
                     var html = "";				
 					for (var i = 0; i < data.length; i++) {  
 						html = html + '<div class="card" style="margin-bottom:5px;">'
