@@ -43,20 +43,35 @@ app.post("/addall",function(req,res){
     });
 });
 
-
-
-app.get("/addalls",function(req,res){
-	var sql = $sql.blog_add.addall;
-	var body =  url.parse(req.url, true).query;
+app.get("/addalls",function(req,res){	
+    var sql = $sql.blog_add.addall;
+	var body = url.parse(req.url, true).query;
 	var params = [body.big_title,body.little_title,body.context,body.type];
 	connection.query(sql,params,function (err, result) {
         if(err){
          console.log('[INSERT ERROR] - ',err.message);
          return;
         }else{
-		 res.setHeader("Access-Control-Allow-Origin", "*");
+		 res.writeHead("Access-Control-Allow-Origin", "*");
 		 res.writeHead(200, {'Content-Type': 'text/html; charset=utf8'});
+		 res.end();
     	 console.log("success!!");
+		}
+			
+    });
+});
+
+
+app.get("/findall",function(req,res){
+	var sql = $sql.blog_find.findall;
+	connection.query(sql,function (err, result) {
+        if(err){
+         console.log('[INSERT ERROR] - ',err.message);
+         return;
+        }else{
+		 res.setHeader("Access-Control-Allow-Origin", "*");
+		 res.json(result);
+         return;		 
 		}
 			
     });
