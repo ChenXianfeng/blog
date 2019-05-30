@@ -31,11 +31,10 @@
 		var big_title = $("#big_title").val();
 		var little_title = $("#little_title").val();
 		var context = $("#result").html();
-		alert(getlocalhost());
 		var type = $("input[name='optradio']:checked").val();
 			$.ajax({
-				 type: "post",
-				 url: getlocalhost()+"/addall",
+				 type: "get",
+				 url: getlocalhost()+"/addalls",
 				 dataType: "json",
 				 data:{
 				   big_title: big_title,
