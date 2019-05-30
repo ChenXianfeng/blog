@@ -35,12 +35,15 @@ app.post("/addall",function(req,res){
          console.log('[INSERT ERROR] - ',err.message);
          return;
         }else{
-		 res.setHeader("200","Content-Type", "text/html");
-    	 
+		 res.setHeader("Access-Control-Allow-Origin", "*");
+		 res.writeHead(200, {'Content-Type': 'text/html; charset=utf8'});
+    	 console.log("success!!");
 		}
 			
     });
 });
+
+
 
 app.get("/findall",function(req,res){
 	var sql = $sql.blog_find.findall;
