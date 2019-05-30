@@ -34,7 +34,7 @@
 		var type = $("input[name='optradio']:checked").val();
 			$.ajax({
 				 type: "post",
-				 url: localhost.ngrok+"/addall",
+				 url: getlocalhost()+"/addall",
 				 dataType: "json",
 				 data:{
 				   big_title: big_title,
