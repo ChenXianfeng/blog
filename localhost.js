@@ -1,6 +1,6 @@
 var localhost= {
 	localhost:"http://localhost:3000",
-	ngrok:"http://chan.ngrok.xiaomiqiu.cn"
+	ngrok:"https://chan.ngrok.xiaomiqiu.cn"
 }
 function getlocalhost(){
 	if (document.location.protocol == "file:"){
