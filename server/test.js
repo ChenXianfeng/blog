@@ -19,7 +19,6 @@ app.post("/",function(req,res){
          console.log('[INSERT ERROR] - ',err.message);
          return;
         }else{
-		 console.log(result);
          return;		 
 		}
 			
@@ -37,7 +36,6 @@ app.post("/addall",function(req,res){
         }else{
 		 res.setHeader("Access-Control-Allow-Origin", "*");
 		 res.json(result);
-    	 console.log("success!!");
 		}
 			
     });
@@ -122,7 +120,6 @@ app.get("/findalltype",function(req,res){
         }else{
 		 res.setHeader("Access-Control-Allow-Origin", "*");
 		 res.json(result);
-		 console.log('jinlail ');
          return;		 
 		}
 			
