@@ -16,11 +16,12 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link href="../../blog.css" rel="stylesheet">
 	<script src="../../showdown-master/dist/showdown.min.js"></script>
-	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 	<script src="../../localhost.js"></script>
 	<script>
 	
-	function convert(){
+	function convert(){	
 		var text = $("#oriContent").val();
 		var converter = new showdown.Converter();
 		var html = converter.makeHtml(text);

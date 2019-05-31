@@ -10,3 +10,6 @@ function getlocalhost(){
 	}
     return url;
 }
+function setiid(value){
+	$.cookie('iid', value);
+}

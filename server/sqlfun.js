@@ -2,7 +2,8 @@ var sqlMap={
   blog_find:{
     findall:"select * from blog ;",
 	findbybigtitle:"select * from blog where big_title = ?;",
-	findbytype:"select * from blog where type = ?;"
+	findbytype:"select * from blog where type = ?;",
+	findbyiid:"select * from blog where iid = ?;"
 
   },
   blog_add:{

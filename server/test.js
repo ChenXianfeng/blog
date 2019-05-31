@@ -78,6 +78,25 @@ app.get("/findall",function(req,res){
     });
 });
 
+
+app.get("/findbyiid",function(req,res){
+	var sql = $sql.blog_find.findbyiid;
+	var param =  url.parse(req.url, true).query;
+	var params = [param.iid];
+	connection.query(sql,params,function (err, result) {
+        if(err){
+         console.log('[ERROR] - ',err.message);
+         return;
+        }else{
+		 res.setHeader("Access-Control-Allow-Origin", "*");
+		 res.json(result);
+		 console.log('success!!!!!!!');
+         return;		 
+		}
+			
+    });
+});
+
 app.get("/findbytype",function(req,res){
 	var sql = $sql.blog_find.findbytype;
 	var param =  url.parse(req.url, true).query;
