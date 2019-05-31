@@ -1,5 +1,5 @@
 var localhost= {
-	localhost:"http://localhost:3000",
+	localhost:"http://localhost:3001",
 	ngrok:"https://chan.ngrok.xiaomiqiu.cn"
 }
 function getlocalhost(){

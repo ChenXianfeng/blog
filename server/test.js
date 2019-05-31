@@ -135,6 +135,6 @@ app.post("/test1",function(req,res){
 });
 
 
-app.listen(3000,function(){   //监听3000端口
+app.listen(3001,function(){   //监听3000端口
     console.log("Server running at 3000 port");
 });
