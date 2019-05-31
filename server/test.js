@@ -90,7 +90,6 @@ app.get("/findbyiid",function(req,res){
         }else{
 		 res.setHeader("Access-Control-Allow-Origin", "*");
 		 res.json(result);
-		 console.log('success!!!!!!!');
          return;		 
 		}
 			

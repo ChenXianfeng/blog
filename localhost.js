@@ -13,3 +13,6 @@ function getlocalhost(){
 function setiid(value){
 	$.cookie('iid', value);
 }
+function settype(value){
+	$.cookie('type', value);
+}
