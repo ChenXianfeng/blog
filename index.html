@@ -20,24 +20,8 @@
 	<script src="localhost.js"></script>
 	<script>		    
 		$(document).ready(function(){
-			$.ajax({
-				type: "GET",
-				url: getlocalhost()+"/findall",
-				dataType: "json",
-				success: function(data){
-                    var html = "";				
-					for (var i = 0; i < data.length; i++) {  
-						html = html + '<div class="card" style="margin-bottom:5px;">'
-									  +'<div class="card-body">'
-									  +'<b>'+data[i].big_title+'</b><span class="badge badge-pill badge-secondary">'+data[i].type+'</span>'
-									  +'<p>'+data[i].context+'...</p>'
-									  +'<p><a href="blog.html" onclick = "setiid('+data[i].iid+')">阅读全部>></a></p>'
-									  +'</div>'
-									+'</div>';		
-					}
-                    $("#cards").html(html);					
-				}
-			});
+			findalltype();
+			findall("详情");
 		});
     </script>
   </head>
@@ -50,23 +34,15 @@
           <div class="col-1 text-center">
             <a class="blog-header-logo text-dark" href=""><span style="color:#1e9fff;">Home</span></a>
           </div>
-
+		  <div class="col-4 d-flex justify-content-end align-items-center">
+			<a class="btn btn-sm btn-outline-secondary" href="write.html">写博客</a>
+          </div>
         </div>
       </header>
 
       <div class="nav-scroller py-1 mb-2" style="margin-bottom:40px;background:#ffffff;padding:5px;">
-        <nav class="nav d-flex justify-content-between">
-          <a class="p-2 text-muted" href="type.html" onclick = "settype('javaweb')">Java web</a>
-          <a class="p-2 text-muted" href="src/eclipse/eclipse.html">eclipse</a>
-          <a class="p-2 text-muted" href="src/sql/sq.html">数据库</a>
-          <a class="p-2 text-muted" href="type.html" onclick = "settype('git')" >Git</a>
-          <a class="p-2 text-muted" href="#">Python</a>
-          <a class="p-2 text-muted" href="#">Node.js</a>
-          <a class="p-2 text-muted" href="#">Vue.js</a>
-          <a class="p-2 text-muted" href="#">小程序</a>
-		  <a class="p-2 text-muted" href="#">收藏夹</a>
-          <a class="p-2 text-muted" href="#">其他</a>
-		  <a class="p-2 text-muted" href="src/write/write.html">写博客</a>
+        <nav class="nav d-flex justify-content-between" id="type">
+		  
         </nav>
       </div>
 	</div> 

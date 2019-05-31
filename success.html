@@ -5,17 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="favicon.ico">
 
     <title>Blog</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <link href="../../blog.css" rel="stylesheet">
-	
+    <link href="blog.css" rel="stylesheet">
+	<script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script src="localhost.js"></script>
+	<script>
+	$(document).ready(function(){
+		findalltype();
+	});
+    </script>
   </head>
 
   <body >	
@@ -24,25 +31,16 @@
         <div class="row flex-nowrap justify-content-between align-items-center">
 
           <div class="col-1 text-center">
-            <a class="blog-header-logo text-dark" href="../../index.html"><span style="color:#1e9fff;">Home</span></a>
+            <a class="blog-header-logo text-dark" href="index.html"><span style="color:#1e9fff;">Home</span></a>
           </div>
-
+		  <div class="col-4 d-flex justify-content-end align-items-center">
+			<a class="btn btn-sm btn-outline-secondary" href="write.html">继续写</a>
+          </div>
         </div>
       </header>
 
       <div class="nav-scroller py-1 mb-2" style="margin-bottom:40px;background:#ffffff;padding:5px;">
-        <nav class="nav d-flex justify-content-between">		  
-          <a class="p-2 text-muted" href="../java/Spring IOC 容器源码分析.html">Java web</a>
-          <a class="p-2 text-muted" href="../eclipse/eclipse.html">eclipse</a>
-          <a class="p-2 text-muted" href="../sql/sq.html">数据库</a>
-          <a class="p-2 text-muted" href="../git/git.html">Git</a>
-          <a class="p-2 text-muted" href="#">Python</a>
-          <a class="p-2 text-muted" href="#">Node.js</a>
-          <a class="p-2 text-muted" href="#">Vue.js</a>
-          <a class="p-2 text-muted" href="#">小程序</a>
-          <a class="p-2 text-muted" href="#">其他</a>
-		  <a class="p-2 text-muted" href="">收藏夹</a>
-		  <a class="p-2 text-muted" href="#"><p style="color:#1e9fff;">写博客</p></a>
+        <nav class="nav d-flex justify-content-between" id="type">		  
         </nav>
       </div>
 	</div> 
@@ -50,7 +48,7 @@
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-12 blog-main">
-		<p>发布成功！<a href = "write.html">继续写</a></p>
+		<p>发布成功！</p>
         </div><!-- /.blog-main -->
 
       </div><!-- /.row -->
@@ -67,10 +65,10 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/vendor/holder.min.js"></script>
 
     <script>
       Holder.addTheme('thumb', {

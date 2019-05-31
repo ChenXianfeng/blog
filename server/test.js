@@ -113,6 +113,23 @@ app.get("/findbytype",function(req,res){
     });
 });
 
+app.get("/findalltype",function(req,res){
+	var sql = $sql.type_find.findall;
+	connection.query(sql,function (err, result) {
+        if(err){
+         console.log('[ERROR] - ',err.message);
+         return;
+        }else{
+		 res.setHeader("Access-Control-Allow-Origin", "*");
+		 res.json(result);
+		 console.log('jinlail ');
+         return;		 
+		}
+			
+    });
+});
+
+
 app.get("/findbybigtitle",function(req,res){
 	var sql = $sql.blog_find.findbytype;
 	var param =  url.parse(req.url, true).query;

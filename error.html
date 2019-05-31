@@ -18,16 +18,15 @@
 	<script src="https://cdn.staticfile.org/jquery/3.4.0/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 	<script src="localhost.js"></script>
-	<script>		
-		$(document).ready(function(){
-			findalltype();
-			findbyiid();
-		});
+	<script>
+	$(document).ready(function(){
+		findalltype();
+	});
     </script>
   </head>
 
-  <body>	
-    <div class="container" style="margin-bottom:25px;">
+  <body >	
+	<div class="container" style="margin-bottom:25px;">
       <header class="blog-header py-3">
         <div class="row flex-nowrap justify-content-between align-items-center">
 
@@ -41,7 +40,7 @@
       </header>
 
       <div class="nav-scroller py-1 mb-2" style="margin-bottom:40px;background:#ffffff;padding:5px;">
-        <nav class="nav d-flex justify-content-between">
+        <nav class="nav d-flex justify-content-between" id="type">		  
         </nav>
       </div>
 	</div> 
@@ -49,14 +48,7 @@
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-12 blog-main">
-
-          <div class="blog-post">
-            <h2 class="blog-post-title" id="big_title"></h2>
-            <p class="blog-post-meta" id = "create_date"></p><a href="#">下载为.MD文件</a>
-          </div>
-          <div class="blog-post" id="context"></div>	  
-
-
+		<p>发布失败！</p>
         </div><!-- /.blog-main -->
 
       </div><!-- /.row -->
@@ -69,7 +61,7 @@
         <a href="#">Back to top</a>
       </p>
     </footer>
-
+	
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

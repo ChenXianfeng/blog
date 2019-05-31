@@ -9,6 +9,12 @@ var sqlMap={
   blog_add:{
 	addall:"insert into blog(big_title,little_title,context,create_date,change_date,type) values(?,?,?,now(),now(),?)",
     addbig_title:"insert into blog(big_title) values(?)"	
+  },
+  type_find:{
+	findall:"select * from type"
+  },
+  type_add:{
+	addall:"insert into type(name,blog)values(?,?)"  
   }
   
 }
