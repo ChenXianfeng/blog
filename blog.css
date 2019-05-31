@@ -1,5 +1,19 @@
 /* stylelint-disable selector-list-comma-newline-after */
 
+body,#footercontainer{
+	background:#e9ecef;
+}
+#homespan{
+	color:#2b6695;
+}
+#containerdiv{
+	margin-top:5px;
+}
+#type{
+	background:#2b6695;
+	padding-left:5px;
+	padding-right:5px;
+}
 .blog-header {
   line-height: 1;
   border-bottom: 1px solid #e5e5e5;

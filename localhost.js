@@ -4,7 +4,7 @@ var localhost= {
 }
 function getlocalhost(){
 	if (document.location.protocol == "file:"){
-		var url = localhost.localhost;
+		var url = localhost.ngrok;
 	}else{
 		var url = localhost.ngrok;
 	}
@@ -25,10 +25,11 @@ function findall(a){
 			var html = "";				
 			for (var i = 0; i < data.length; i++) {  
 				html = html + '<div class="card" style="margin-bottom:5px;">'
-							  +'<div class="card-body">'
-							  +'<b>'+data[i].big_title+'</b><span class="badge badge-pill badge-secondary">'+data[i].type+'</span>'
+							  +'<div class="card-body">'   
+							  +'<a href="blog.html" onclick = "setiid('+data[i].iid+')"><b>'+data[i].big_title
+							  +'</b></a>'
 							  +'<p>'+data[i].context+'...</p>'
-							  +'<p><a href="blog.html" onclick = "setiid('+data[i].iid+')">'+a+'>></a></p>'
+							  +'<p></p>'
 							  +'</div>'
 							+'</div>';		
 			}
@@ -46,7 +47,7 @@ function findalltype(){
 			for (var i = 0; i < data.length; i++) {
 				var type = 	"'"+data[i].name+"'";		
 				html = html + '<a class="p-2 text-muted" href="type.html" onclick = '
-				+'"settype('+type+')">'+data[i].name+'</a>';		
+				+'"settype('+type+')"><span style="color:#eee;">'+data[i].name+'</span></a>';		
 			}
 			$("#type").html(html);					
 		}
