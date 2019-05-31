@@ -36,7 +36,7 @@ app.post("/addall",function(req,res){
          return;
         }else{
 		 res.setHeader("Access-Control-Allow-Origin", "*");
-		 res.writeHead(200, {'Content-Type': 'text/html; charset=utf8'});
+		 res.json(result);
     	 console.log("success!!");
 		}
 			
