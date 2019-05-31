@@ -1,4 +1,4 @@
 我的博客
 
-地址https://chenxianfeng.github.io/blog/git/git.html
+访问地址https://chenxianfeng.github.io/blog/
 
