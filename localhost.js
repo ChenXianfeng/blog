@@ -40,8 +40,8 @@ function findall(){
 		url: getlocalhost()+"/findall",
 		dataType: "json",
 		success: function(data){
-			var html = showbolg(data);	
-			$("#cards").html(html);					
+			var html = showbolg(data);
+			$("#cards").html(html);								
 		},
 		error:function(e){
 			$("#cards").html("nothing..");

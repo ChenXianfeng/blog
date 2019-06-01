@@ -1,4 +1,9 @@
 /* stylelint-disable selector-list-comma-newline-after */
+.blog-header{
+	background:#e9ecef;
+	padding-right:2px;
+	padding-left:1px;
+}
 #big_title{
 	width:90.5%;
 	margin-right:14px;
