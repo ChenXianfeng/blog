@@ -4,7 +4,7 @@ var localhost= {
 }
 function getlocalhost(){
 	if (document.location.protocol == "file:"){
-		var url = localhost.ngrok;
+		var url = localhost.localhost;
 	}else{
 		var url = localhost.ngrok;
 	}
@@ -16,24 +16,35 @@ function setiid(value){
 function settype(value){
 	$.cookie('type', value);
 }
-function findall(a){
+function showbolg(data){
+	var html= "";
+	if(data.length>0){
+		for (var i = 0; i < data.length; i++) {  
+			html = html + '<div class="card">'
+						  +'<div class="card-body">'   
+						  +'<a href="blog.html" onclick = "setiid('+data[i].iid+')"><b>'+data[i].big_title
+						  +'</b></a>'
+						  +'<p>'+data[i].context+'</p>'
+						  +'<p></p>'
+						  +'</div>'
+						+'</div>';		
+		}	
+	}else{
+		html = "nothing..";
+	}	
+	return html;
+}
+function findall(){
 	$.ajax({
 		type: "GET",
 		url: getlocalhost()+"/findall",
 		dataType: "json",
 		success: function(data){
-			var html = "";				
-			for (var i = 0; i < data.length; i++) {  
-				html = html + '<div class="card" style="margin-bottom:5px;">'
-							  +'<div class="card-body">'   
-							  +'<a href="blog.html" onclick = "setiid('+data[i].iid+')"><b>'+data[i].big_title
-							  +'</b></a>'
-							  +'<p>'+data[i].context+'...</p>'
-							  +'<p></p>'
-							  +'</div>'
-							+'</div>';		
-			}
+			var html = showbolg(data);	
 			$("#cards").html(html);					
+		},
+		error:function(e){
+			$("#cards").html("nothing..");
 		}
 	});
 		}
@@ -49,28 +60,20 @@ function findalltype(){
 				html = html + '<a class="p-2 text-muted" href="type.html" onclick = '
 				+'"settype('+type+')"><span style="color:#eee;">'+data[i].name+'</span></a>';		
 			}
+			html = html + '<a class="p-2 text-muted" href="chat.html"><span style="color:#eee;">Chat</span></a>';
 			$("#type").html(html);					
 		}
 	});
 
 }
-function findbytype(a){
+function findbytype(){
 	var type = $.cookie('type');
 	$.ajax({
 		type: "GET",
 		url: getlocalhost()+"/findbytype?type="+type,
 		dataType: "json",
 		success: function(data){
-			var html = "";				
-			for (var i = 0; i < data.length; i++) {  
-				html = html + '<div class="card" style="margin-bottom:5px;">'
-							  +'<div class="card-body">'
-							  +'<b>'+data[i].big_title+'</b><span class="badge badge-pill badge-secondary">'+data[i].type+'</span>'
-							  +'<p>'+data[i].context+'...</p>'
-							  +'<p><a href="blog.html" onclick = "setiid('+data[i].iid+')">'+a+'>></a></p>'
-							  +'</div>'
-							+'</div>';		
-			}
+			var html = showbolg(data);
 			$("#cards").html(html);					
 		}
 	});
