@@ -24,6 +24,7 @@
 		findalltype();		
 	});
 	function flieimg(){
+	alert($('#file')[0].files[0]);
 		var formData = new FormData(); 
 		formData.append('file', $('#file')[0].files[0]);
 		$.ajax({
