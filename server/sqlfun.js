@@ -15,6 +15,9 @@ var sqlMap={
   },
   type_add:{
 	addall:"insert into type(name,blog)values(?,?)"  
+  },
+  picture_add:{
+	addall:"insert into picture(path)values(?)"
   }
   
 }

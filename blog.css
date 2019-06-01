@@ -1,4 +1,8 @@
 /* stylelint-disable selector-list-comma-newline-after */
+.inputfile {
+    opacity: 0;
+	display:none;
+}
 .blog-header{
 	background:#e9ecef;
 	padding-right:2px;

@@ -21,8 +21,23 @@
 	<script src="localhost.js"></script>
 	<script>
 	$(document).ready(function(){
-		findalltype();
+		findalltype();		
 	});
+	function flieimg(){
+		var formData = new FormData(); 
+		formData.append('file', $('#file')[0].files[0]);
+		$.ajax({
+			url: 'http://localhost:3000/upload',
+			type: 'POST',
+			cache: false, //上传文件不需要缓存
+			data: formData,
+			processData: false, 
+			contentType: false, 
+			success: function (data) {
+				alert(data[0].path);
+			}
+		}) 
+	}
     </script>
 	
   </head>
@@ -55,10 +70,11 @@
 
 		<div class="form-group">
 			<div style="padding:5px;background:;">
-			<input type="button" class="btn btn-info btn-sm" value="插入图片">
-			<input type="button" class="btn btn-info btn-sm" value="导入附件">
-			<input type="button" class="btn btn-info btn-sm" value="摘要">
-			<input type="button" class="btn btn-info btn-sm" value="导出">
+			<label for="file"  class="btn btn-info btn-sm">插入图片</label>
+			<input onchange = "flieimg()" type="file" name="file" id="file" class="inputfile" />
+			<label for="file"  class="btn btn-info btn-sm" >导入附件</label>
+			<label for="file"  class="btn btn-info btn-sm" >摘要</label>
+			<label for="file"  class="btn btn-info btn-sm" >导出</label>
 			</div>
 			<textarea class="form-control" id="oriContent" name = "context" style="height:400px;" onkeyup="convert()">内容(markdown)</textarea>
 			<div class="card" style="height:400px;border:solid 1px #e9ecef;border-radius:5px;margin-top:2px;">

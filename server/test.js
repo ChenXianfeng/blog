@@ -7,7 +7,10 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var fs = require('fs');
 var url = require('url');
+var multer=require('multer');
 
+var upload=multer({dest:'uploads/'})
+app.use(express.static(path.join(__dirname,"../static")));
 app.use(bodyParser.urlencoded({ extended: false }));
 var connection = mysql.createConnection(models.mysql);
 connection.connect();
@@ -165,7 +168,23 @@ app.post("/test1",function(req,res){
 			res.end(data);
 		   })
 });
-
+app.post("/upload",upload.single('test'),function(req,res){
+	var filepath = path.join(__dirname,'/static/img/'+req.file.originalname);
+	fs.readFile(req.file.path,(err,data)=>{ 
+		fs.writeFile(filepath,data,(err)=>{			
+			var sql = $sql.picture_add.addall;
+			connection.query(sql,filepath,function (err, result) {
+				if(err){
+				 console.log('[INSERT ERROR] - ',err.message);
+				 return;
+				}else{
+				 res.setHeader("Access-Control-Allow-Origin", "*");
+				 res.send({"path":filepath});
+				}	
+			});    
+		})
+    })
+});
 
 app.listen(3000,function(){   //监听3000端口
     console.log("Server running at 3000 port");
