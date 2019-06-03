@@ -24,7 +24,7 @@ function showbolg(data){
 						  +'<div class="card-body">'   
 						  +'<a href="blog.html" onclick = "setiid('+data[i].iid+')"><b>'+data[i].big_title
 						  +'</b></a>'
-						  +'<p>'+data[i].context+'</p>'
+						  +'<p>'+data[i].remark+'</p>'
 						  +'<p></p>'
 						  +'</div>'
 						+'</div>';		
@@ -103,6 +103,14 @@ function formsubmit(){
 	var big_title = $("#big_title").val();
 	var little_title = $("#little_title").val();
 	var context = $("#result").html();
+	var remark = $("#remark").html();
+	if (remark == ""){
+		remark = context.replace(/<[^>]+>/g,"").substring(0, 200);
+	}else{
+		remark = remark.replace(/<[^>]+>/g,"");
+	}
+	remark = $.trim(remark);
+	//
 	var type = $("input[name='optradio']:checked").val();
 	$.ajax({
 		type: "post",
@@ -112,7 +120,8 @@ function formsubmit(){
 			big_title:big_title,
 			little_title:little_title,
 			context:context,
-			type:type
+			type:type,
+			remark:remark
 		},
 		success: function(data){
 			window.location.href = "success.html";			

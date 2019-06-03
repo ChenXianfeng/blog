@@ -14,24 +14,11 @@ app.use(express.static(path.join(__dirname,"../static")));
 app.use(bodyParser.urlencoded({ extended: false }));
 var connection = mysql.createConnection(models.mysql);
 connection.connect();
-app.post("/",function(req,res){
-	var sql = $sql.user.findall;
-	console.log(sql);
-	connection.query(sql,function (err, result) {
-        if(err){
-         console.log('[INSERT ERROR] - ',err.message);
-         return;
-        }else{
-         return;		 
-		}
-			
-    });
-});
 
 app.post("/addall",function(req,res){
 	var sql = $sql.blog_add.addall;
 	var body = req.body;
-	var params = [body.big_title,body.little_title,body.context,body.type];
+	var params = [body.big_title,body.little_title,body.context,body.type,body.remark];
 	connection.query(sql,params,function (err, result) {
         if(err){
          console.log('[INSERT ERROR] - ',err.message);
@@ -43,26 +30,6 @@ app.post("/addall",function(req,res){
 			
     });
 });
-
-app.get("/addalls",function(req,res){	
-    var sql = $sql.blog_add.addbig_title;
-	var body = url.parse(req.url, true).query;
-	var params = [body.big_title];
-	connection.query(sql,params,function (err, result) {
-        if(err){
-         console.log('[INSERT ERROR] - ',err.message);
-         return;
-        }else{
-		 res.setHeader("Access-Control-Allow-Origin", "*");
-		 res.json(result);
-		 console.log(result);
-    	 console.log("success!!");
-		 return;
-		}
-			
-    });
-});
-
 
 app.get("/findall",function(req,res){
 	var sql = $sql.blog_find.findall;
@@ -147,29 +114,11 @@ app.get("/findbybigtitle",function(req,res){
     });
 });
 
-app.post("/test",function(req,res){
-	var str="";
-	req.on("data",function(dt){
-         str+=dt
-    })
-	req.on("end",function(){
-         console.log(str)
-    })
-});
-
-app.post("/test1",function(req,res){
-	console.log(req.body);
-			   fs.readFile(filePath, function (err, data) {
-			if (err) {
-			  throw err;
-			}
-			// 设置请求头，访问文件类型为 css 文件
-			res.setHeader("Content-Type", "text/html");
-			res.end(data);
-		   })
-});
 app.post("/upload",upload.single('test'),function(req,res){
-	var filepath = path.join(__dirname,'/static/img/'+req.file.originalname);
+	let time=Date.now()+parseInt(Math.random()*999)+parseInt(Math.random()*2222);
+	let extname=req.file.mimetype.split('/')[1]
+	let keepname=time+'.'+extname    
+	var filepath = path.join(__dirname,'/static/img/'+keepname);
 	fs.readFile(req.file.path,(err,data)=>{ 
 		fs.writeFile(filepath,data,(err)=>{			
 			var sql = $sql.picture_add.addall;
@@ -185,6 +134,7 @@ app.post("/upload",upload.single('test'),function(req,res){
 		})
     })
 });
+
 app.get("/getimg",function(req,res){
     var param =  url.parse(req.url, true).query;
 	fs.readFile(param.path,'binary',function(err,  file)  {
