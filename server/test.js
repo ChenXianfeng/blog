@@ -158,6 +158,7 @@ app.post("/changetype",function(req,res){
 			console.log('[INSERT ERROR] - ',err.message);
 			return;
 		}else{
+			
 		}			
 	});
 	for (var i = 0; i < body.chk_value.length; i++){
@@ -167,12 +168,13 @@ app.post("/changetype",function(req,res){
 				console.log('[INSERT ERROR] - ',err.message);
 				return;
 			}else{
-				res.setHeader("Access-Control-Allow-Origin", "*");
-				res.send({"success":"success"});
+				
 			}
 				
 		});	
 	}
+	res.setHeader("Access-Control-Allow-Origin", "*");
+	res.send({"success":"success"});
 
 });
 

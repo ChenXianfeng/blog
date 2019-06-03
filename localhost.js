@@ -54,16 +54,17 @@ function findalltype(){
 		url: getlocalhost()+"/findalltype",
 		dataType: "json",
 		success: function(data){
-			var html = "";				
+			var html = "";
+			var htmltype = "";			
 			for (var i = 0; i < data.length; i++) {
-				if(data[i].type == 1){
+				if(data[i].type != 0){
 					var type = 	"'"+data[i].name+"'";		
-					html = html + '<a class="p-2 text-muted" href="type.html" onclick = '
-					+'"settype('+type+')"><span style="color:#eee;">'+data[i].name+'</span></a>';	
+					html = html + '<a class="p-2 text-muted" href="'+data[i].href+'" onclick = '
+					+'"settype('+type+')"><span style="color:#eee;">'+data[i].name+'</span></a>';
+					htmltype = htmltype +'<option>'+data[i].name+'</option>';					
 				}
-			}
-			html = html + '<a class="p-2 text-muted" href="chat.html"><span style="color:#eee;">Chat</span></a>';
-			html = html + '<a class="p-2 text-muted" href="settings.html"><span style="color:#eee;">Settings</span></a>';
+			}         	
+			$("#blog_type").html(htmltype);			
 			$("#type").html(html);					
 		}
 	});
@@ -84,6 +85,12 @@ function findmytype(){
 											+'<input type="checkbox" name="checkboxtype" class="form-check-input" value="'+data[i].name+'" checked>'+data[i].name
 										+'</label>'
 									+'</div>';
+				}else if(data[i].type == 2){
+					html = html + ' <div class="form-check">'
+										+'<label class="form-check-label">'
+											+'<input type="checkbox" name="checkboxtype" class="form-check-input" value="'+data[i].name+'" checked disabled>'+data[i].name
+										+'</label>'
+									+'</div>';	
 				}else{
 					html = html + ' <div class="form-check">'
 										+'<label class="form-check-label">'
@@ -120,6 +127,7 @@ function findbyiid(){
 				$("#big_title").html(data[0].big_title);
 				$("#create_date").html(data[0].create_date);
 				$("#context").html(data[0].context);
+				$("#blog_type").html(data[0].type);
 			}
 		});
 }
@@ -136,6 +144,7 @@ function formsubmit(){
 	var little_title = $("#little_title").val();
 	var context = $("#result").html();
 	var remark = $("#remark").html();
+	var type = $("#blog_type").val();
 	if (remark == ""){
 		remark = context.replace(/<[^>]+>/g,"").substring(0, 200);
 	}else{
@@ -143,7 +152,6 @@ function formsubmit(){
 	}
 	remark = $.trim(remark);
 	//
-	var type = $("input[name='optradio']:checked").val();
 	$.ajax({
 		type: "post",
 		url: getlocalhost()+"/addall",
@@ -198,6 +206,7 @@ function getType(){
 			chk_value:chk_value
 		},
 		success: function(data){
+
 			window.location.href = "success.html";			
 		}
 	});

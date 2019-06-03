@@ -18,7 +18,7 @@ var sqlMap={
   },
   type_change:{
 	type_change:"update type set type = 1  where name = ?",
-    type_changeall:"update type set type = 0"	
+    type_changeall:"update type set type = 0 where type = 1"	
   },
   picture_add:{
 	addall:"insert into picture(path)values(?)"

@@ -61,7 +61,7 @@
 			<input onchange = "flieimg()" type="file" name="file" id="file" class="inputfile" />
 			<label   class="btn btn-info btn-sm" >导入附件</label>
 			<label   class="btn btn-info btn-sm" href="#demo" data-toggle="collapse" >摘要</label>
-			<label   class="btn btn-info btn-sm" >导出</label>
+			<label   class="btn btn-info btn-sm" >导出（.MD）</label>
 			</div>
 			<div id="demo" class="collapse">
 				<textarea class="form-control" id="remark"></textarea>
@@ -72,7 +72,13 @@
 			</div>
 		</div>
 
-		<div>文章标签：<span>添加</span></div>
+		<div>
+		文章标签：		
+			<select class="form-control" id="blog_type" style="width:10%;">
+			
+			</select>
+		</div>
+
 		</form>
         </div><!-- /.blog-main -->
 
