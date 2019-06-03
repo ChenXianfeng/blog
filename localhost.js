@@ -61,6 +61,7 @@ function findalltype(){
 				+'"settype('+type+')"><span style="color:#eee;">'+data[i].name+'</span></a>';		
 			}
 			html = html + '<a class="p-2 text-muted" href="chat.html"><span style="color:#eee;">Chat</span></a>';
+			html = html + '<a class="p-2 text-muted" href="chat.html"><span style="color:#eee;">Settings</span></a>';
 			$("#type").html(html);					
 		}
 	});
