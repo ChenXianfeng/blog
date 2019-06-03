@@ -61,12 +61,41 @@ function findalltype(){
 				+'"settype('+type+')"><span style="color:#eee;">'+data[i].name+'</span></a>';		
 			}
 			html = html + '<a class="p-2 text-muted" href="chat.html"><span style="color:#eee;">Chat</span></a>';
-			html = html + '<a class="p-2 text-muted" href="chat.html"><span style="color:#eee;">Settings</span></a>';
+			html = html + '<a class="p-2 text-muted" href="settings.html"><span style="color:#eee;">Settings</span></a>';
 			$("#type").html(html);					
 		}
 	});
 
 }
+
+function findmytype(){
+	$.ajax({
+		type: "GET",
+		url: getlocalhost()+"/findalltype",
+		dataType: "json",
+		success: function(data){
+			var html = "";				
+			for (var i = 0; i < data.length; i++) {
+				if(data[i].type == 1){
+					html = html + ' <div class="form-check">'
+										+'<label class="form-check-label">'
+											+'<input type="checkbox" class="form-check-input" value="'+data[i].name+'">'+data[i].name
+										+'</label>'
+									+'</div>';
+				}else{
+					html = html + ' <div class="form-check">'
+										+'<label class="form-check-label">'
+											+'<input type="checkbox" class="form-check-input" value="'+data[i].name+'" disabled>'+data[i].name
+										+'</label>'
+									+'</div>';					
+				}
+			}
+			$("#choice").html(html);					
+		}
+	});
+
+}
+
 function findbytype(){
 	var type = $.cookie('type');
 	$.ajax({
