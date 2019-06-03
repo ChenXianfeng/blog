@@ -56,9 +56,11 @@ function findalltype(){
 		success: function(data){
 			var html = "";				
 			for (var i = 0; i < data.length; i++) {
-				var type = 	"'"+data[i].name+"'";		
-				html = html + '<a class="p-2 text-muted" href="type.html" onclick = '
-				+'"settype('+type+')"><span style="color:#eee;">'+data[i].name+'</span></a>';		
+				if(data[i].type == 1){
+					var type = 	"'"+data[i].name+"'";		
+					html = html + '<a class="p-2 text-muted" href="type.html" onclick = '
+					+'"settype('+type+')"><span style="color:#eee;">'+data[i].name+'</span></a>';	
+				}
 			}
 			html = html + '<a class="p-2 text-muted" href="chat.html"><span style="color:#eee;">Chat</span></a>';
 			html = html + '<a class="p-2 text-muted" href="settings.html"><span style="color:#eee;">Settings</span></a>';
@@ -79,13 +81,13 @@ function findmytype(){
 				if(data[i].type == 1){
 					html = html + ' <div class="form-check">'
 										+'<label class="form-check-label">'
-											+'<input type="checkbox" class="form-check-input" value="'+data[i].name+'">'+data[i].name
+											+'<input type="checkbox" name="checkboxtype" class="form-check-input" value="'+data[i].name+'" checked>'+data[i].name
 										+'</label>'
 									+'</div>';
 				}else{
 					html = html + ' <div class="form-check">'
 										+'<label class="form-check-label">'
-											+'<input type="checkbox" class="form-check-input" value="'+data[i].name+'" disabled>'+data[i].name
+											+'<input type="checkbox" name="checkboxtype" class="form-check-input" value="'+data[i].name+'" >'+data[i].name
 										+'</label>'
 									+'</div>';					
 				}
@@ -179,4 +181,24 @@ function flieimg(){
 			alert(html);
 		}
 	}) 
+}
+
+function getType(){
+	var chk_value =[];   
+	$('input[name="checkboxtype"]:checked').each(function(){
+		chk_value.push($(this).val());				
+	});
+	//chk_value = $.makeArray(chk_value);
+	$.ajax({
+		type: "POST",
+		url: getlocalhost()+"/changetype",
+		dataType: "json",
+		traditional:true,
+		data:{
+			chk_value:chk_value
+		},
+		success: function(data){
+			window.location.href = "success.html";			
+		}
+	});
 }

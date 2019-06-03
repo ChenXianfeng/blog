@@ -11,10 +11,14 @@ var sqlMap={
     addbig_title:"insert into blog(big_title) values(?)"	
   },
   type_find:{
-	findall:"select * from type"
+	findall:"select * from type;"
   },
   type_add:{
 	addall:"insert into type(name,blog)values(?,?)"  
+  },
+  type_change:{
+	type_change:"update type set type = 1  where name = ?",
+    type_changeall:"update type set type = 0"	
   },
   picture_add:{
 	addall:"insert into picture(path)values(?)"

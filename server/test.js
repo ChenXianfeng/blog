@@ -149,6 +149,33 @@ app.get("/getimg",function(req,res){
 	});
 });
 
+app.post("/changetype",function(req,res){
+    var sql = $sql.type_change.type_change;
+	var body = req.body;
+	var sqlover = $sql.type_change.type_changeall;
+	connection.query(sqlover,function (err, result) {
+		if(err){
+			console.log('[INSERT ERROR] - ',err.message);
+			return;
+		}else{
+		}			
+	});
+	for (var i = 0; i < body.chk_value.length; i++){
+		var params = body.chk_value[i];
+		connection.query(sql,params,function (err, result) {
+			if(err){
+				console.log('[INSERT ERROR] - ',err.message);
+				return;
+			}else{
+				res.setHeader("Access-Control-Allow-Origin", "*");
+				res.send({"success":"success"});
+			}
+				
+		});	
+	}
+
+});
+
 app.listen(3000,function(){   //监听3000端口
     console.log("Server running at 3000 port");
 });
