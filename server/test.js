@@ -185,6 +185,19 @@ app.post("/upload",upload.single('test'),function(req,res){
 		})
     })
 });
+app.get("/getimg",function(req,res){
+    var param =  url.parse(req.url, true).query;
+	fs.readFile(param.path,'binary',function(err,  file)  {
+		if  (err)  {
+			console.log(err);
+			return;
+		}else{
+			res.writeHead(200,  {'Content-Type':'image/jpeg'});
+			res.write(file,'binary');
+			res.end();
+		}
+	});
+});
 
 app.listen(3000,function(){   //监听3000端口
     console.log("Server running at 3000 port");

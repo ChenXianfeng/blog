@@ -119,3 +119,25 @@ function formsubmit(){
 		}
 	});
 }
+function flieimg(){
+	var formData = new FormData(); 
+	formData.append('test', $('#file')[0].files[0]);
+	$.ajax({
+		url: getlocalhost()+'/upload',
+		type: 'POST',
+		cache: false, //上传文件不需要缓存
+		data: formData,
+		processData: false, 
+		contentType: false, 
+		success: function (data) {
+			var text = $("#oriContent").val();
+			var img = '!['+data.path+']('+getlocalhost()+'/getimg?path='+data.path+')';
+			text = text + img;
+			$("#oriContent").val(text);
+			var converter = new showdown.Converter();
+			var html = converter.makeHtml(text);
+			$("#result").html(html);
+			alert(html);
+		}
+	}) 
+}

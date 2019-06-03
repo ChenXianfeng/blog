@@ -23,22 +23,6 @@
 	$(document).ready(function(){
 		findalltype();		
 	});
-	function flieimg(){
-	alert($('#file')[0].files[0]);
-		var formData = new FormData(); 
-		formData.append('file', $('#file')[0].files[0]);
-		$.ajax({
-			url: 'http://localhost:3000/upload',
-			type: 'POST',
-			cache: false, //上传文件不需要缓存
-			data: formData,
-			processData: false, 
-			contentType: false, 
-			success: function (data) {
-				alert(data[0].path);
-			}
-		}) 
-	}
     </script>
 	
   </head>
