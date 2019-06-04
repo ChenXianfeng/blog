@@ -178,6 +178,46 @@ app.post("/changetype",function(req,res){
 
 });
 
+app.get("/findstyle",function(req,res){
+	var sql = $sql.style_find.findall;
+	connection.query(sql,function (err, result) {
+        if(err){
+         console.log('[ERROR] - ',err.message);
+         return;
+        }else{
+		 res.setHeader("Access-Control-Allow-Origin", "*");
+		 res.json(result);
+         return;		 
+		}
+			
+    });
+});
+app.get("/changestyle",function(req,res){
+	var sql = $sql.style_change.style_change;
+	var sqlall = $sql.style_change.style_changeall;
+	connection.query(sqlall,function (err, result) {
+        if(err){
+         console.log('[ERROR] - ',err.message);
+         return;
+        }else{
+         return;		 
+		}
+			
+    });
+	var param =  url.parse(req.url, true).query;
+	var params = [param.name];
+	connection.query(sql,params,function (err, result) {
+		if(err){
+		 console.log('[ERROR] - ',err.message);
+		 return;
+		}else{
+		 res.setHeader("Access-Control-Allow-Origin", "*");
+		 res.json(result);
+		 return;		 
+		}
+		
+	});
+});
 app.listen(3000,function(){   //监听3000端口
     console.log("Server running at 3000 port");
 });

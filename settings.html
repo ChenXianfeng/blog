@@ -22,6 +22,7 @@
 		$(document).ready(function(){
 			findalltype();
 			findmytype();
+			findallstyle();
 		});
     </script>
   </head>
@@ -32,7 +33,7 @@
 			<header class="blog-header py-3">
 				<div class="row flex-nowrap justify-content-between align-items-center header">
 				  <div class="col-1 text-center ">
-					<a class="blog-header-logo text-dark" href=""><span class="homespan">Home</span></a>
+					<a class="blog-header-logo text-dark" href="index.html"><span class="homespan">Home</span></a>
 				  </div>
 				  <div class="col-4 d-flex justify-content-end align-items-center ">
 					<a class="btn btn-sm btn-outline-secondary homespan" href="write.html">写博客</a>
@@ -51,23 +52,27 @@
     <main role="main" class="container"  style="min-height:900px;">
         <div class="col-md-12 blog-main" id="cards">
 		<div class="card-body" style="background:white;">
+		        <h5>设置样式</h5>
+				  <form>
+				<div id="radio_style"></div>
+				</form>
 		        <h5>设置导航栏</h5>
-				<div id="choice"></div>
+					<div id="choice"></div>
 				<h5>标签</h5>
-				<div>
-				<label href="#add" data-toggle="collapse">添加</label>
-				<label>删除</label>
-				</div>
-				<div id="add" class="collapse">
-					<div class="form-group form-inline">
-						<input type="text" class="form-control" id = "" style="width:30%;margin-right:10px;" name="big_title"  value="">
-						<input type="button" class="form-control btn btn-success" onclick = "formsubmit()" value="添加">
+					<div>
+					<label href="#add" data-toggle="collapse">添加</label>
+					<label>删除</label>
 					</div>
-				</div>
-				<div id="delete"></div>
+					<div id="add" class="collapse">
+						<div class="form-group form-inline">
+							<input type="text" class="form-control" id = "" style="width:30%;margin-right:10px;" name="big_title"  value="">
+							<input type="button" class="form-control btn btn-success" onclick = "formsubmit()" value="添加">
+						</div>
+					</div>
+					<div id="delete"></div>
 				<div style="margin-top:10px;">
-				<button type="button" onclick="getType()" class="btn btn-success" >保存</button>
-				<button type="button" class="btn btn-light">取消</button>
+					<button type="button" onclick="getType()" class="btn btn-success" >保存</button>
+					<button type="button" class="btn btn-light">取消</button>
 				</div>
 		</div>
 

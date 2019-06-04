@@ -22,7 +22,15 @@ var sqlMap={
   },
   picture_add:{
 	addall:"insert into picture(path)values(?)"
+  },
+  style_find:{
+	findall:"select * from style;"  
+  },
+  style_change:{
+	style_change:"update style set type = 1  where name = ?",
+	style_changeall:"update style set type = 0"  
   }
+
   
 }
 

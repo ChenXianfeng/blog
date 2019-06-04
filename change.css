@@ -1,0 +1,16 @@
+.header_bac{
+	background-image: url(bac.jpg);
+}
+.header{
+	margin-top:80px;
+}
+.blog-header{
+	background:none;
+	height:140px;
+}
+#type{
+	background:none;
+}
+.homespan{
+	color:white;
+}

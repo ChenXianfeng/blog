@@ -71,7 +71,7 @@ function findalltype(){
 			$("#type").html(html);					
 		}
 	});
-
+	findstyle();
 }
 
 function findmytype(){
@@ -205,6 +205,7 @@ function getType(){
 	$('input[name="checkboxtype"]:checked').each(function(){
 		chk_value.push($(this).val());				
 	});
+	changestyle();
 	//chk_value = $.makeArray(chk_value);
 	$.ajax({
 		type: "POST",
@@ -217,6 +218,65 @@ function getType(){
 		success: function(data){
 
 			window.location.href = "success.html";			
+		}
+	});
+}
+function setstyle(str){
+	var css = '<link href="'+str+'" rel="stylesheet">';
+	$('head').append(css);
+}
+function findstyle(){
+	$.ajax({
+		type: "GET",
+		url: getlocalhost()+"/findstyle",
+		dataType: "json",
+		success: function(data){
+			for (var i = 0; i < data.length; i++) {
+				if(data[i].name!="¾­µä"&&data[i].type==1){
+					setstyle(data[i].href);	
+				}	
+			}
+		},
+		error:function(e){
+			$("#cards").html("nothing..");
+		}
+	});
+}
+function findallstyle(){
+	$.ajax({
+		type: "GET",
+		url: getlocalhost()+"/findstyle",
+		dataType: "json",
+		success: function(data){
+			var html = "";
+			for (var i = 0; i < data.length; i++) {
+				if(data[i].type==1){
+					html = html + '<div class="radio">'
+									+'<label><input type="radio" name="optradio" value="'+data[i].name+'" checked>'+data[i].name+'</label>'
+								+'</div>';
+				}else{
+					html = html + '<div class="radio">'
+									+'<label><input type="radio" name="optradio" value="'+data[i].name+'">'+data[i].name+'</label>'
+								+'</div>';					
+				}	
+			}
+			$("#radio_style").html(html);	
+		},
+		error:function(e){
+			$("#cards").html("nothing..");
+		}
+	});
+}
+function changestyle(){
+	var name = $('input:radio:checked').val();
+	$.ajax({
+		type: "GET",
+		url: getlocalhost()+"/changestyle?name="+name,
+		dataType: "json",
+		success: function(data){						
+		},
+		error:function(e){
+			$("#cards").html("nothing..");
 		}
 	});
 }
