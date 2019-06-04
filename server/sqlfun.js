@@ -1,13 +1,13 @@
 var sqlMap={
   blog_find:{
-    findall:"select * from blog ;",
+    findall:"select * from blog order by create_date;",
 	findbybigtitle:"select * from blog where big_title = ?;",
 	findbytype:"select * from blog where type = ?;",
 	findbyiid:"select * from blog where iid = ?;"
 
   },
   blog_add:{
-	addall:"insert into blog(big_title,context,create_date,change_date,type,remark) values(?,?,now(),now(),?,?)",
+	addall:"insert into blog(big_title,context,context_md,create_date,change_date,type,remark) values(?,?,?,now(),now(),?,?)",
     addbig_title:"insert into blog(big_title) values(?)"	
   },
   type_find:{
