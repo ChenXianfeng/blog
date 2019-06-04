@@ -4,7 +4,7 @@ var localhost= {
 }
 function getlocalhost(){
 	if (document.location.protocol == "file:"){
-		var url = localhost.localhost;
+		var url = localhost.ngrok;
 	}else{
 		var url = localhost.ngrok;
 	}

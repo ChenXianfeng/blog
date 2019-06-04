@@ -60,8 +60,8 @@ a:hover{
 	margin-bottom:0px;
 	border-radius:0px;
 	padding-top:20px;
-	border:1px solid #e2ddc7;
-	padding-bottom:20px;
+	/*border:1px solid #e2ddc7;*/
+	padding-bottom:55px;
 }
 .card-body{
 	padding-top:0px;
