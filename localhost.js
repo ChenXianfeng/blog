@@ -154,6 +154,7 @@ function convert(){
 function formsubmit(){
 	var big_title = $("#big_title").val();
 	var context = $("#result").html();
+	var context_md = $("#oriContent").html();
 	var remark = $("#remark").html();
 	var type = $("#blog_type").val();
 	if (remark == ""){
@@ -170,7 +171,8 @@ function formsubmit(){
 			big_title:big_title,
 			context:context,
 			type:type,
-			remark:remark
+			remark:remark,
+			context_md:context_md
 		},
 		success: function(data){
 			window.location.href = "success.html";			
