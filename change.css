@@ -15,5 +15,9 @@
 	color:white;
 }
 .card-body{
-	background:#ddd6da;
+	background:none;
+}
+b{
+	color:#2974b7;/*#4ea1db #2b6695*/
+	font-size:19px;	
 }
