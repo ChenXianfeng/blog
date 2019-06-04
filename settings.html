@@ -55,6 +55,18 @@
 		<div class="card-body" style="background:white;">
 		        <h5>设置导航栏</h5>
 				<div id="choice"></div>
+				<h5>标签</h5>
+				<div>
+				<label href="#add" data-toggle="collapse">添加</label>
+				<label>删除</label>
+				</div>
+				<div id="add" class="collapse">
+					<div class="form-group form-inline">
+						<input type="text" class="form-control" id = "" style="width:30%;margin-right:10px;" name="big_title"  value="">
+						<input type="button" class="form-control btn btn-success" onclick = "formsubmit()" value="添加">
+					</div>
+				</div>
+				<div id="delete"></div>
 				<div style="margin-top:10px;">
 				<button type="button" onclick="getType()" class="btn btn-success" >保存</button>
 				<button type="button" class="btn btn-light">取消</button>

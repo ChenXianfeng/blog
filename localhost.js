@@ -59,9 +59,12 @@ function findalltype(){
 			for (var i = 0; i < data.length; i++) {
 				if(data[i].type != 0){
 					var type = 	"'"+data[i].name+"'";		
-					html = html + '<a class="p-2 text-muted" href="'+data[i].href+'" onclick = '
-					+'"settype('+type+')"><span style="color:#eee;">'+data[i].name+'</span></a>';
-					htmltype = htmltype +'<option>'+data[i].name+'</option>';					
+					html = html + '<a class="p-2 text-muted" href="'+data[i].href+'" onclick = "settype('+type+')">'
+									+'<span style="color:#eee;">'+data[i].name+'</span>'
+								+ '</a>';									
+				}
+				if(data[i].type != 2){
+					htmltype = htmltype +'<option>'+data[i].name+'</option>';	
 				}
 			}         	
 			$("#blog_type").html(htmltype);			
@@ -77,7 +80,8 @@ function findmytype(){
 		url: getlocalhost()+"/findalltype",
 		dataType: "json",
 		success: function(data){
-			var html = "";				
+			var html = "";
+			var deletehtml = "";			
 			for (var i = 0; i < data.length; i++) {
 				if(data[i].type == 1){
 					html = html + ' <div class="form-check">'
@@ -97,8 +101,16 @@ function findmytype(){
 											+'<input type="checkbox" name="checkboxtype" class="form-check-input" value="'+data[i].name+'" >'+data[i].name
 										+'</label>'
 									+'</div>';					
+				}	
+				if(data[i].type != 2){
+					deletehtml = deletehtml + ' <div class="form-check">'
+										+'<label class="form-check-label">'
+											+'<input type="checkbox" name="checkboxtype" class="form-check-input" value="'+data[i].name+'" >'+data[i].name
+										+'</label>'
+									+'</div>';		
 				}
 			}
+			$("#delete").html(deletehtml);
 			$("#choice").html(html);					
 		}
 	});
@@ -141,7 +153,6 @@ function convert(){
 	
 function formsubmit(){
 	var big_title = $("#big_title").val();
-	var little_title = $("#little_title").val();
 	var context = $("#result").html();
 	var remark = $("#remark").html();
 	var type = $("#blog_type").val();
@@ -151,14 +162,13 @@ function formsubmit(){
 		remark = remark.replace(/<[^>]+>/g,"");
 	}
 	remark = $.trim(remark);
-	//
+	alert(remark);
 	$.ajax({
 		type: "post",
 		url: getlocalhost()+"/addall",
 		dataType: "json",
 		data:{
 			big_title:big_title,
-			little_title:little_title,
 			context:context,
 			type:type,
 			remark:remark

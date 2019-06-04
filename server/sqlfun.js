@@ -7,7 +7,7 @@ var sqlMap={
 
   },
   blog_add:{
-	addall:"insert into blog(big_title,little_title,context,create_date,change_date,type,remark) values(?,?,?,now(),now(),?,?)",
+	addall:"insert into blog(big_title,context,create_date,change_date,type,remark) values(?,?,now(),now(),?,?)",
     addbig_title:"insert into blog(big_title) values(?)"	
   },
   type_find:{
@@ -17,7 +17,7 @@ var sqlMap={
 	addall:"insert into type(name,blog)values(?,?)"  
   },
   type_change:{
-	type_change:"update type set type = 1  where name = ?",
+	type_change:"update type set type = 1  where name = ? and type != 2",
     type_changeall:"update type set type = 0 where type = 1"	
   },
   picture_add:{

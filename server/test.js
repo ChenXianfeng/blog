@@ -18,7 +18,7 @@ connection.connect();
 app.post("/addall",function(req,res){
 	var sql = $sql.blog_add.addall;
 	var body = req.body;
-	var params = [body.big_title,body.little_title,body.context,body.type,body.remark];
+	var params = [body.big_title,body.context,body.type,body.remark];
 	connection.query(sql,params,function (err, result) {
         if(err){
          console.log('[INSERT ERROR] - ',err.message);
