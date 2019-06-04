@@ -162,7 +162,6 @@ function formsubmit(){
 		remark = remark.replace(/<[^>]+>/g,"");
 	}
 	remark = $.trim(remark);
-	alert(remark);
 	$.ajax({
 		type: "post",
 		url: getlocalhost()+"/addall",
