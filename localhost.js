@@ -196,7 +196,6 @@ function flieimg(){
 			var converter = new showdown.Converter();
 			var html = converter.makeHtml(text);
 			$("#result").html(html);
-			alert(html);
 		}
 	}) 
 }

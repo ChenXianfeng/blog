@@ -118,7 +118,7 @@ app.post("/upload",upload.single('test'),function(req,res){
 	let time=Date.now()+parseInt(Math.random()*999)+parseInt(Math.random()*2222);
 	let extname=req.file.mimetype.split('/')[1]
 	let keepname=time+'.'+extname    
-	var filepath = path.join(__dirname,'/static/img/'+keepname);
+	var filepath = path.join(__dirname,'../../static/img/'+keepname);
 	fs.readFile(req.file.path,(err,data)=>{ 
 		fs.writeFile(filepath,data,(err)=>{			
 			var sql = $sql.picture_add.addall;
