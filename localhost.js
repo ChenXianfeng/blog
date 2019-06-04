@@ -20,14 +20,14 @@ function showbolg(data){
 	var html= "";
 	if(data.length>0){
 		for (var i = 0; i < data.length; i++) {  
-			html = html + '<div class="card">'
+			html = html + ''
 						  +'<div class="card-body">'   
-						  +'<a href="blog.html" onclick = "setiid('+data[i].iid+')"><b>'+data[i].big_title
-						  +'</b></a>'
+						  +'<a href="blog.html" onclick = "setiid('+data[i].iid+')"><span class="title_findall">'+data[i].big_title
+						  +'</span></a>'
 						  +'<p>'+data[i].remark+'</p>'
 						  +'<p></p>'
 						  +'</div>'
-						+'</div>';		
+						+'';		
 		}	
 	}else{
 		html = "nothing..";
@@ -41,10 +41,10 @@ function findall(){
 		dataType: "json",
 		success: function(data){
 			var html = showbolg(data);
-			$("#cards").html(html);								
+			$("#card_findall").html(html);								
 		},
 		error:function(e){
-			$("#cards").html("nothing..");
+			$("#card_findall").html("nothing..");
 		}
 	});
 		}
@@ -125,7 +125,7 @@ function findbytype(){
 		dataType: "json",
 		success: function(data){
 			var html = showbolg(data);
-			$("#cards").html(html);					
+			$("#card_findall").html(html);					
 		}
 	});
 }

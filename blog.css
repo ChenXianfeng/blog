@@ -39,9 +39,12 @@
 	font-size:30px;
 	margin-top:20px;
 }
-b{
+.title_findall{
 	color:#4ea1db;/*#4ea1db #2b6695*/
 	font-size:18px;	
+}
+.title_findall:hover{
+text-decoration:underline;
 }
 b:hover{
 	color:#f44444e6;
@@ -56,10 +59,14 @@ a:hover{
 	border:none;
 	margin-bottom:0px;
 	border-radius:0px;
+	padding-top:20px;
+	border:1px solid #e2ddc7;
+	padding-bottom:20px;
 }
 .card-body{
-	padding-top:10px;
-	padding-bottom:10px;
+	padding-top:0px;
+	padding-bottom:0px;
+	border-bottom:1px dashed #d6dddc;
 }
 body,#footercontainer{
 	/*background:#e9ecef;*/

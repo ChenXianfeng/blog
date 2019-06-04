@@ -17,10 +17,12 @@
 .card-body{
 	background:none;
 }
-b{
-	color:#2974b7;/*#4ea1db #2b6695*/
-	font-size:19px;	
+.title_findall{
+	color:#3178ba;
 }
 .title_post{
 	color:#2974b7;
+}
+.card{
+		
 }
